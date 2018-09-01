@@ -12,7 +12,7 @@ wg genkey | tee ${KUBEWIRE_KEY_PATH} | wg pubkey
 
 echo "Configuring wireguard"
 ip link add dev wg0 type wireguard
-wg set wg0 private-key /tmp/wg_private_key
+wg set wg0 private-key ${KUBEWIRE_KEY_PATH}
 wg set wg0 listen-port ${KUBEWIRE_VPN_SERVICE_PORT}
 ip address add ${KUBEWIRE_VPN_HOST_RANGE} dev wg0
 
